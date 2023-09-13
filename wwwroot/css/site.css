@@ -1,0 +1,139 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.3);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Style for the form group container */
+/* Style for the form group container */
+.form-group {
+  display: flex; /* Add a flexbox layout */
+  align-items: center;
+  margin-bottom: 20px; /* Add spacing between form groups */
+}
+
+/* Style for the label */
+label {
+  margin-right: 10px; /* Add spacing between label and input */
+  font-weight: bold; /* Make labels bold for emphasis */
+}
+#search{
+  padding-right: 5px;
+}
+/* Style for the input field and select element */
+input[type="text"],
+#groupByCountry {
+  padding: 10px; /* Increase padding for better input spacing */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Slightly rounded corners */
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  flex: 1; /* Take up remaining horizontal space */
+  height: 40px; /* Set the height of both input and select elements */
+  margin-right: 10px; /* Add spacing between input and select elements */
+}
+
+/* Style for the submit button */
+button[type="submit"] {
+  padding: 10px 20px; /* Increase padding for better button spacing */
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+/* Hover effect for the submit button */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style the select element container */
+.select-container {
+  width: 100%;
+  margin-bottom: 20px; /* Add spacing between select elements */
+}
+
+/* Style the default option */
+#groupByCountry option[value=""] {
+  color: #999; /* Change the text color to gray */
+}
+
+/* Style the options */
+#groupByCountry option {
+  padding: 5px;
+}
+
+/* Style the select element when it's focused (clicked on) */
+#groupByCountry:focus {
+  border-color: #007bff; /* Change the border color to blue when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow when focused */
+}

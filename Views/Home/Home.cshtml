@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <div class="row">
+        <h1>Honda WMI Data Table</h1><p></p>
+        <div id="loading-indicator" class="loading">
+        <div class="spinner"></div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-secondary">View All</button>
+        </div>
+        <div class="col-md-4">
+            <form method="post">
+                <label for="sortOrder">Sort By:</label>
+                <button type="submit" class="btn btn-secondary" name="sortOrder" value="desc">View All Desc</button>
+                <button type="submit" class="btn btn-secondary" name="sortOrder" value="asc">View All Asc</button>
+            </form>
+
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Created On</th>
+                <th>Date Available To Public</th>
+                <th>WMI</th>
+                <th>Vehicle Type</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><p>@item.Id</p></td>
+                    <td><p>@item.Name</p></td>
+                    <td><p>@item.CreatedOn</p></td>
+                    <td><p>@item.DateAvailableToPublic</p></td>
+                    <td><p>@item.WMI</p></td>
+                    <td><p>@item.VehicleType</p></td>
+                    <td><p>@item.Country</p></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <div class="row">
+        <h1>Honda WMI Data Table</h1><p></p>
+        <div id="loading-indicator" class="loading">
+        <div class="spinner"></div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
+                <div class="form-group">
+                    <div class="col-sm-12 col-md-12">
+                    <!--<input type="text" name="search" id="search" class="form-control" placeholder="Search">--><samp> </samp>
+                    <input type="text" id="searchQuery" name="searchQuery" value="@ViewBag.SearchQuery" placeholder="Search"/>
+                    <select id="groupByCountry" name="groupByCountry">
+                    <option value="">Select Country</option>
+                    @foreach (var country in ViewBag.Countries)
+                    {
+                        <option value="@country">@country</option>
+                    }
+                    </select>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <form action="." method="get">
+                    <button type="submit" class="btn btn-primary">View All</button>
+                    </form>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-md-12">
+            <form method="post" asp-action="SortTable">
+                Sort By <label for="CreatedOn" value="@ViewBag.CreatedOn">CreatedOn</label>and  <label for="WMI" value="@ViewBag.WMI"> WMI :</label>
+                <button type="submit" name="SortButton" value="sortByValue">Sort</button>
+            </form>
+        </div>
+    </div>
+    <table id="data-table" class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Created On</th>
+                <th>Date Available To Public</th>
+                <th>WMI</th>
+                <th>Vehicle Type</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><p>@item.Id</p></td>
+                    <td><p>@item.Name</p></td>
+                    <td><p>@item.CreatedOn</p></td>
+                    <td><p>@item.DateAvailableToPublic</p></td>
+                    <td><p>@item.WMI</p></td>
+                    <td><p>@item.VehicleType</p></td>
+                    <td><p>@item.Country</p></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#loading-indicator').hide();
+        $('form').submit(function () {
+            $('#loading-indicator').show();
+        });
+    });
+
+    $(document).ready(function () {
+        $('#SortButton').click(function () {
+            $.ajax({
+                url: '/Index', // URL of your controller action
+                type: 'POST', // Use 'GET' or 'POST' as needed
+                dataType: 'json',
+                success: function (data) {
+                    // Clear the table body
+                    $('#data-table tbody').empty();
+
+                    // Loop through the data and append rows to the table
+                    $.each(data, function (index, item) {
+                        console.log('Processing item:', item); // Log each item being processed
+                        $('#data-table tbody').append(
+                            <tr>
+                                <td>${item.Country}</td>
+                                <td>${item.CreatedOn}</td>
+                                <td>${item.DateAvailableToPublic}</td>
+                                <td>${item.Name}</td>
+                                <td>${item.UpdatedOn}</td>
+                                <td>${item.VehicleType}</td>
+                                <td>${item.WMI}</td>
+                            </tr>
+                        );
+                    });
+                },
+                error: function (error) {
+                    // Handle any errors here
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+
+

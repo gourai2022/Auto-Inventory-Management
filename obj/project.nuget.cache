@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6cs9/97iNOH6Ewkt154meZvweoZDT9V0iy04V6h6leZ1ndS85U9/8gGNsWUMBw463sDUoJF8zIGIFcru+kemSA==",
+  "success": true,
+  "projectFilePath": "/Users/gourikulkarni/Downloads/MyProject/MyProject.csproj",
+  "expectedPackageFiles": [
+    "/Users/gourikulkarni/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

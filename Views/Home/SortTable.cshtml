@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Sort";
+}
+
+@{
+    // Retrieve and sort the data using the service
+    var wmiService = new WmiService();
+    var wmiData = wmiService.LoadWmiDataFromJsonFile()
+        .OrderByDescending(item => item.CreatedOn)
+        .ThenBy(item => item.WMI)
+        .ToList();
+}
+<div>
+    <form action="Index" method="get">
+    <button type="submit" class="btn btn-primary">Back</button>
+    <h4>Data is sorted by CreatedOn and WMI</h4>
+    </form>
+    
+</div>
+
+<table>
+     <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Created On</th>
+                <th>Date Available To Public</th>
+                <th>WMI</th>
+                <th>Vehicle Type</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in wmiData)
+        {
+            <tr>
+                <td><p>@item.Id</p></td>
+                <td><p>@item.Name</p></td>
+                <td><p>@item.CreatedOn</p></td>
+                <td><p>@item.DateAvailableToPublic</p></td>
+                <td><p>@item.WMI</p></td>
+                <td><p>@item.VehicleType</p></td>
+                <td><p>@item.Country</p></td>
+            </tr>
+        }
+    </tbody>
+</table>
